@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+/* Command Center Layout */
+.command-center-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr 340px;
+    /* Sensors | Map | Controls */
+    gap: 1.5rem;
+    height: calc(100vh - 80px);
+    /* Full height minus header */
+    overflow: hidden;
+    padding: 0 0 1rem 0;
+}
+
+/* Cyber-Agri Typography */
+.cyber-font {
+    font-family: 'Share Tech Mono', monospace;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.sensor-value {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.75rem;
+    color: var(--color-primary-emerald);
+    text-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+}
+
+.sensor-label {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+/* Left Column: Real-time Sensors */
+.sensor-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+.sensor-card {
+    background: rgba(30, 41, 59, 0.6);
+    border-left: 3px solid var(--color-secondary-teal);
+    padding: 1rem;
+    transition: all 0.3s;
+}
+
+.sensor-card:hover {
+    background: rgba(30, 41, 59, 0.9);
+    transform: translateX(5px);
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.1);
+}
+
+.sensor-card.alert {
+    border-left-color: var(--color-alert-red);
+}
+
+.sensor-card.alert .sensor-value {
+    color: var(--color-alert-red);
+    text-shadow: 0 0 10px rgba(239, 68, 68, 0.4);
+}
+
+/* Center Column: Geospatial Twin */
+.geo-panel {
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Right Column: Simulation Controls */
+.control-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+/* Profit Glow Effect */
+.profit-glow {
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.6);
+    border: 1px solid #10B981;
+    animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+    0% {
+        box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 25px rgba(16, 185, 129, 0.8);
+    }
+
+    100% {
+        box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+    }
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .command-center-grid {
+        grid-template-columns: 240px 1fr 300px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .command-center-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 500px auto;
+        height: auto;
+        overflow-y: visible;
+    }
+
+    .sensor-panel {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* === NEW MAP STYLES === */
+
+/* Neon Glow for Selected District */
+.selected-glow {
+    filter: drop-shadow(0 0 8px #10B981);
+    stroke: #fff;
+    stroke-width: 3px;
+    animation: pulse-border 2s infinite;
+}
+
+@keyframes pulse-border {
+    0% {
+        stroke-opacity: 1;
+        filter: drop-shadow(0 0 8px #10B981);
+    }
+
+    50% {
+        stroke-opacity: 0.7;
+        filter: drop-shadow(0 0 15px #10B981);
+    }
+
+    100% {
+        stroke-opacity: 1;
+        filter: drop-shadow(0 0 8px #10B981);
+    }
+}
+
+/* Hide Leaflet Controls to custom style later */
+/* But here we use standard zoom, just darker */
+.leaflet-control-zoom {
+    border: 1px solid #D1D5DB !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    border-radius: 4px !important;
+}
+
+.leaflet-control-zoom a {
+    background: transparent !important;
+    color: #003366 !important;
+    font-family: 'Inter', sans-serif !important;
+}
+
+/* Ensure tooltips are legible */
+.leaflet-tooltip {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border: 1px solid #D1D5DB !important;
+    color: #1F2937 !important;
+    font-family: 'Inter', sans-serif !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12) !important;
+    border-radius: 4px !important;
+}
+
+/* Leaflet Container */
+.leaflet-container {
+    background: #F9FAFB !important;
+    font-family: 'Inter', sans-serif !important;
+}
+
+/* Smart Corridor Line Animation */
+.smart-corridor-line {
+    animation: dash 20s linear infinite;
+    filter: drop-shadow(0 0 5px #0ea5e9);
+}
+
+@keyframes dash {
+    to {
+        stroke-dashoffset: 1000;
+    }
+}
+
+.truck-marker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

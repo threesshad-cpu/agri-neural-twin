@@ -1,0 +1,166 @@
+/* State Command Center Styles */
+.state-view-container {
+    padding: 2rem;
+    height: 100vh;
+    overflow-y: auto;
+    background: radial-gradient(circle at 50% 20%, #1e293b 0%, #0f172a 100%);
+    color: #f1f5f9;
+}
+
+.branding-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--color-primary-emerald);
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+
+.itnt-logo {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, #10B981, #3B82F6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.partner-logos {
+    display: flex;
+    gap: 2rem;
+    font-size: 0.9rem;
+    color: #94a3b8;
+    font-weight: 600;
+}
+
+/* State Stats Bar */
+.state-stats-bar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.stat-box {
+    background: rgba(30, 41, 59, 0.6);
+    border: 1px solid var(--color-border);
+    padding: 1.5rem;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--color-secondary-teal);
+}
+
+.stat-value {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 2.5rem;
+    color: var(--color-primary-emerald);
+}
+
+.stat-label {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+    color: #94a3b8;
+    margin-top: 0.5rem;
+}
+
+/* TN Hex Map Grid */
+.tn-map-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1rem;
+    perspective: 1000px;
+}
+
+.district-hex {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid var(--color-primary-emerald);
+    padding: 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px;
+    position: relative;
+}
+
+.district-hex:hover {
+    transform: scale(1.1) translateZ(20px);
+    background: rgba(16, 185, 129, 0.2);
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+    z-index: 10;
+}
+
+.district-hex.risk-high {
+    border-color: var(--color-alert-red);
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.district-hex.risk-high:hover {
+    background: rgba(239, 68, 68, 0.25);
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
+}
+
+.hex-name {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #e2e8f0;
+}
+
+.hex-risk {
+    font-size: 0.7rem;
+    margin-top: 0.5rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* Equality Banner */
+.equality-banner {
+    margin-top: 4rem;
+    text-align: center;
+    font-family: 'Share Tech Mono', monospace;
+    color: var(--color-secondary-teal);
+    font-size: 0.9rem;
+    padding: 1rem;
+    border-top: 1px solid var(--color-border);
+    opacity: 0.7;
+}
+
+@keyframes scanline {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+.scan-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, rgba(16, 185, 129, 0.05), transparent);
+    pointer-events: none;
+    animation: scanline 8s linear infinite;
+    z-index: 0;
+}

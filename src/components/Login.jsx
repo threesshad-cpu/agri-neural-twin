@@ -112,147 +112,125 @@ export default function Login({ onLogin }) {
     return (
         <div style={{ minHeight: '100vh', background: '#F9FAFB', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '1rem' }}>
 
-            <div className="gov-card" style={{ maxWidth: '500px', width: '100%', padding: '0', overflow: 'hidden', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)', border: '1px solid #E5E7EB' }}>
-
-                {/* 6-Language Toggle */}
-                <div style={{ background: '#F3F4F6', padding: '0.75rem', borderBottom: '1px solid #E5E7EB', display: 'flex', justifyContent: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
-                    {LANGUAGES.map(lang => (
-                        <button
-                            key={lang.code}
-                            onClick={() => handleLanguageChange(lang.code)}
-                            style={{
-                                background: i18n.language === lang.code ? '#003366' : 'white',
-                                color: i18n.language === lang.code ? 'white' : '#374151',
-                                border: i18n.language === lang.code ? '1px solid #003366' : '1px solid #D1D5DB',
-                                padding: '4px 10px', borderRadius: '4px', fontSize: '0.75rem', cursor: 'pointer',
-                                fontWeight: i18n.language === lang.code ? '700' : '500'
-                            }}
-                        >
-                            {lang.label}
-                        </button>
-                    ))}
+            <div className="gov-card" style={{ maxWidth: '500px', width: '100%', padding: '2.5rem', overflow: 'hidden', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)', border: '1px solid #E5E7EB' }}>
+                {/* Header */}
+                <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+                    <h2 style={{ fontSize: '1.25rem', fontWeight: '700', color: '#111827', marginBottom: '0.5rem' }}>
+                        {t('login_title')}
+                    </h2>
+                    <div style={{ height: '4px', width: '60px', background: '#D4AF37', margin: '0 auto', borderRadius: '2px' }}></div>
                 </div>
 
-                <div style={{ padding: '2.5rem' }}>
-                    {/* Header */}
-                    <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-                        <h2 style={{ fontSize: '1.25rem', fontWeight: '700', color: '#111827', marginBottom: '0.5rem' }}>
-                            {t('login_title')}
-                        </h2>
-                        <div style={{ height: '4px', width: '60px', background: '#D4AF37', margin: '0 auto', borderRadius: '2px' }}></div>
-                    </div>
-
-                    {/* Method Tabs */}
-                    <div style={{ display: 'flex', marginBottom: '2rem', borderBottom: '2px solid #E5E7EB' }}>
-                        <button
-                            onClick={() => { setAuthMethod('aadhaar'); setUserType('farmer'); }}
-                            style={{ flex: 1, padding: '1rem', background: 'none', border: 'none', borderBottom: authMethod === 'aadhaar' ? '2px solid #003366' : 'none', color: authMethod === 'aadhaar' ? '#003366' : '#6B7280', fontWeight: 'bold', fontSize: '0.9rem', cursor: 'pointer' }}
-                        >
-                            {t('farmer_role')}
-                        </button>
-                        <button
-                            onClick={() => { setAuthMethod('standard'); setUserType('officer'); }}
-                            style={{ flex: 1, padding: '1rem', background: 'none', border: 'none', borderBottom: authMethod === 'standard' ? '2px solid #003366' : 'none', color: authMethod === 'standard' ? '#003366' : '#6B7280', fontWeight: 'bold', fontSize: '0.9rem', cursor: 'pointer' }}
-                        >
-                            {t('officer_role')}
-                        </button>
-                    </div>
-
-                    {/* Content */}
-                    <motion.div
-                        key={authMethod}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.2 }}
+                {/* Method Tabs */}
+                <div style={{ display: 'flex', marginBottom: '2rem', borderBottom: '2px solid #E5E7EB' }}>
+                    <button
+                        onClick={() => { setAuthMethod('aadhaar'); setUserType('farmer'); }}
+                        style={{ flex: 1, padding: '1rem', background: 'none', border: 'none', borderBottom: authMethod === 'aadhaar' ? '2px solid #003366' : 'none', color: authMethod === 'aadhaar' ? '#003366' : '#6B7280', fontWeight: 'bold', fontSize: '0.9rem', cursor: 'pointer' }}
                     >
-                        {authMethod === 'aadhaar' ? (
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                                <div>
+                        {t('farmer_role')}
+                    </button>
+                    <button
+                        onClick={() => { setAuthMethod('standard'); setUserType('officer'); }}
+                        style={{ flex: 1, padding: '1rem', background: 'none', border: 'none', borderBottom: authMethod === 'standard' ? '2px solid #003366' : 'none', color: authMethod === 'standard' ? '#003366' : '#6B7280', fontWeight: 'bold', fontSize: '0.9rem', cursor: 'pointer' }}
+                    >
+                        {t('officer_role')}
+                    </button>
+                </div>
+
+                {/* Content */}
+                <motion.div
+                    key={authMethod}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.2 }}
+                >
+                    {authMethod === 'aadhaar' ? (
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                            <div>
+                                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem', fontWeight: '600', color: '#374151' }}>
+                                    {t('aadhaar_label')}
+                                </label>
+                                <input
+                                    name="aadhaar"
+                                    value={credentials.aadhaar}
+                                    onChange={handleInput}
+                                    placeholder="XXXX XXXX XXXX"
+                                    maxLength={14}
+                                    style={{ width: '100%', padding: '0.75rem', border: '1px solid #D1D5DB', borderRadius: '6px', fontSize: '1rem' }}
+                                />
+                            </div>
+
+                            {otpSent && (
+                                <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }}>
                                     <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem', fontWeight: '600', color: '#374151' }}>
-                                        {t('aadhaar_label')}
+                                        {t('otp_placeholder')}
                                     </label>
                                     <input
-                                        name="aadhaar"
-                                        value={credentials.aadhaar}
+                                        name="otp"
+                                        value={credentials.otp}
                                         onChange={handleInput}
-                                        placeholder="XXXX XXXX XXXX"
-                                        maxLength={14}
-                                        style={{ width: '100%', padding: '0.75rem', border: '1px solid #D1D5DB', borderRadius: '6px', fontSize: '1rem' }}
+                                        placeholder="• • • • • •"
+                                        maxLength={6}
+                                        style={{ width: '100%', padding: '0.75rem', border: '1px solid #D1D5DB', borderRadius: '6px', fontSize: '1.2rem', textAlign: 'center', letterSpacing: '0.5em' }}
                                     />
-                                </div>
+                                    <div style={{ textAlign: 'right', marginTop: '0.5rem', fontSize: '0.8rem' }}>
+                                        {timer > 0 ? (
+                                            <span style={{ color: '#10B981' }}>{t('resend_in', { seconds: timer })}</span>
+                                        ) : (
+                                            <button onClick={sendOtp} style={{ background: 'none', border: 'none', color: '#003366', textDecoration: 'underline', cursor: 'pointer' }}>{t('resend_otp')}</button>
+                                        )}
+                                    </div>
+                                </motion.div>
+                            )}
 
-                                {otpSent && (
-                                    <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }}>
-                                        <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem', fontWeight: '600', color: '#374151' }}>
-                                            {t('otp_placeholder')}
-                                        </label>
-                                        <input
-                                            name="otp"
-                                            value={credentials.otp}
-                                            onChange={handleInput}
-                                            placeholder="• • • • • •"
-                                            maxLength={6}
-                                            style={{ width: '100%', padding: '0.75rem', border: '1px solid #D1D5DB', borderRadius: '6px', fontSize: '1.2rem', textAlign: 'center', letterSpacing: '0.5em' }}
-                                        />
-                                        <div style={{ textAlign: 'right', marginTop: '0.5rem', fontSize: '0.8rem' }}>
-                                            {timer > 0 ? (
-                                                <span style={{ color: '#10B981' }}>{t('resend_in', { seconds: timer })}</span>
-                                            ) : (
-                                                <button onClick={sendOtp} style={{ background: 'none', border: 'none', color: '#003366', textDecoration: 'underline', cursor: 'pointer' }}>{t('resend_otp')}</button>
-                                            )}
-                                        </div>
-                                    </motion.div>
-                                )}
-
-                                <button
-                                    onClick={otpSent ? verifyAadhaarLogin : sendOtp}
-                                    disabled={loading}
-                                    style={{
-                                        width: '100%', padding: '0.875rem', background: '#003366', color: 'white',
-                                        border: 'none', borderRadius: '6px', fontWeight: 'bold', fontSize: '1rem', cursor: 'pointer',
-                                        opacity: loading ? 0.7 : 1
-                                    }}
-                                >
-                                    {loading ? '...' : (otpSent ? t('verify_button') : t('send_otp'))}
-                                </button>
+                            <button
+                                onClick={otpSent ? verifyAadhaarLogin : sendOtp}
+                                disabled={loading}
+                                style={{
+                                    width: '100%', padding: '0.875rem', background: '#003366', color: 'white',
+                                    border: 'none', borderRadius: '6px', fontWeight: 'bold', fontSize: '1rem', cursor: 'pointer',
+                                    opacity: loading ? 0.7 : 1
+                                }}
+                            >
+                                {loading ? '...' : (otpSent ? t('verify_button') : t('send_otp'))}
+                            </button>
+                        </div>
+                    ) : (
+                        <form onSubmit={handleStandardLogin} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                            <div>
+                                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem', fontWeight: '600', color: '#374151' }}>{t('officer_role')} ID</label>
+                                <input
+                                    name="id"
+                                    value={credentials.id}
+                                    onChange={handleInput}
+                                    placeholder="TN-OFF-001"
+                                    style={{ width: '100%', padding: '0.75rem', border: '1px solid #D1D5DB', borderRadius: '6px', fontSize: '1rem' }}
+                                />
                             </div>
-                        ) : (
-                            <form onSubmit={handleStandardLogin} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                                <div>
-                                    <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem', fontWeight: '600', color: '#374151' }}>{t('officer_role')} ID</label>
-                                    <input
-                                        name="id"
-                                        value={credentials.id}
-                                        onChange={handleInput}
-                                        placeholder="TN-OFF-001"
-                                        style={{ width: '100%', padding: '0.75rem', border: '1px solid #D1D5DB', borderRadius: '6px', fontSize: '1rem' }}
-                                    />
-                                </div>
-                                <div>
-                                    <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem', fontWeight: '600', color: '#374151' }}>{t('password')}</label>
-                                    <input
-                                        type="password"
-                                        name="password"
-                                        value={credentials.password}
-                                        onChange={handleInput}
-                                        style={{ width: '100%', padding: '0.75rem', border: '1px solid #D1D5DB', borderRadius: '6px', fontSize: '1rem' }}
-                                    />
-                                </div>
-                                <button
-                                    type="submit"
-                                    disabled={loading}
-                                    style={{
-                                        width: '100%', padding: '0.875rem', background: '#003366', color: 'white',
-                                        border: 'none', borderRadius: '6px', fontWeight: 'bold', fontSize: '1rem', cursor: 'pointer',
-                                        opacity: loading ? 0.7 : 1
-                                    }}
-                                >
-                                    {loading ? '...' : t('secure_login')}
-                                </button>
-                            </form>
-                        )}
-                    </motion.div>
-                </div>
+                            <div>
+                                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem', fontWeight: '600', color: '#374151' }}>{t('password')}</label>
+                                <input
+                                    type="password"
+                                    name="password"
+                                    value={credentials.password}
+                                    onChange={handleInput}
+                                    style={{ width: '100%', padding: '0.75rem', border: '1px solid #D1D5DB', borderRadius: '6px', fontSize: '1rem' }}
+                                />
+                            </div>
+                            <button
+                                type="submit"
+                                disabled={loading}
+                                style={{
+                                    width: '100%', padding: '0.875rem', background: '#003366', color: 'white',
+                                    border: 'none', borderRadius: '6px', fontWeight: 'bold', fontSize: '1rem', cursor: 'pointer',
+                                    opacity: loading ? 0.7 : 1
+                                }}
+                            >
+                                {loading ? '...' : t('secure_login')}
+                            </button>
+                        </form>
+                    )}
+                </motion.div>
             </div>
 
             {/* Footer / Demo Toggle */}

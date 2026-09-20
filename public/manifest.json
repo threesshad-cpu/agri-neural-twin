@@ -1,0 +1,35 @@
+{
+  "name": "Agri-Neural Twin",
+  "short_name": "AgriTwin",
+  "description": "AI-powered Agricultural Intelligence Platform for Tamil Nadu farmers",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#003366",
+  "orientation": "portrait-primary",
+  "lang": "en-IN",
+  "categories": ["agriculture", "government", "productivity"],
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23003366' rx='16'/><text y='72' x='50' font-size='60' text-anchor='middle'>🌱</text></svg>",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "FarmGPT",
+      "short_name": "GPT",
+      "description": "Open AI Agricultural Assistant",
+      "url": "/?view=farmgpt"
+    },
+    {
+      "name": "7-Day Outlook",
+      "short_name": "Outlook",
+      "description": "View 7-day crop forecast",
+      "url": "/?view=outlook"
+    }
+  ]
+}

@@ -1,10 +1,492 @@
 /* ========================================
-   TAMIL NADU GOVERNMENT PORTAL THEME
-   Professional, Clean, Accessible Design
-======================================== */
+   TAMIL NADU GOVERNMENT AGRICULTURE
+   COMMAND CENTER — PREMIUM LIGHT THEME
+   ======================================== */
 
-/* === GOOGLE FONTS === */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Arima:wght@400;500;600;700&display=swap');
+/* === GOOGLE FONTS (Must be first) === */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Arima:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+/* ══════════════════════════════════════════
+   PREMIUM GLOBAL HEADER
+   ══════════════════════════════════════════ */
+
+.premium-header {
+    background: #FFFFFF;
+    border-bottom: 3px solid #C8A84B;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    box-shadow: 0 2px 16px rgba(0, 51, 102, 0.08);
+}
+
+/* Top government strip */
+.premium-header__topstrip {
+    background: #003366;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    padding: 0.28rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.premium-header__topstrip-sep {
+    color: rgba(200, 168, 75, 0.6);
+    font-size: 0.6rem;
+}
+
+/* Main header row */
+.premium-header__main {
+    padding: 0.7rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.premium-header__brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.premium-header__emblem {
+    flex-shrink: 0;
+    filter: drop-shadow(0 2px 6px rgba(200, 168, 75, 0.3));
+}
+
+.premium-header__title-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.premium-header__gov-label {
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: #C8A84B;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.premium-header__title {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #003366;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+}
+
+.premium-header__subtitle {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: #64748B;
+    letter-spacing: 0.02em;
+}
+
+/* Right controls */
+.premium-header__controls {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    flex-shrink: 0;
+}
+
+.premium-header__live-badge {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 0.28rem 0.75rem;
+    background: #F0FDF4;
+    border: 1px solid #BBF7D0;
+    border-radius: 20px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: #15803D;
+    letter-spacing: 0.06em;
+}
+
+.premium-header__live-dot {
+    width: 7px;
+    height: 7px;
+    background: #15803D;
+    border-radius: 50%;
+    box-shadow: 0 0 6px #15803D;
+    animation: dataPulse 1.5s ease-in-out infinite;
+    display: inline-block;
+}
+
+.premium-header__lang-group {
+    display: flex;
+    gap: 0.25rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.premium-lang-btn {
+    background: transparent;
+    color: #64748B;
+    border: 1px solid #E2E8F0;
+    padding: 0.22rem 0.55rem;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.15s ease;
+    font-family: inherit;
+}
+
+.premium-lang-btn:hover {
+    background: #F1F5F9;
+    border-color: #CBD5E1;
+    color: #003366;
+}
+
+.premium-lang-btn.active {
+    background: #003366;
+    color: #FFFFFF;
+    border-color: #003366;
+}
+
+/* Alert ticker */
+.premium-header__alert {
+    padding: 0.32rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.premium-header__alert-label {
+    flex-shrink: 0;
+    font-size: 0.62rem;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 3px;
+    letter-spacing: 0.06em;
+}
+
+.premium-header__alert-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: dataPulse 2s ease-in-out infinite;
+}
+
+.premium-header__alert-text {
+    font-size: 0.75rem;
+    font-weight: 500;
+    flex: 1;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.premium-header__alert-dots {
+    display: flex;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.premium-header__alert-pip {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(0, 51, 102, 0.18);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.2s;
+}
+
+.premium-header__alert-pip.active {
+    background: #003366;
+}
+
+/* ══════════════════════════════════════════
+   PREMIUM SIDEBAR
+   ══════════════════════════════════════════ */
+
+.premium-sidebar {
+    background: #FFFFFF !important;
+    border-right: 1px solid #E8EDF4 !important;
+    box-shadow: 2px 0 12px rgba(0, 51, 102, 0.05) !important;
+}
+
+.premium-sidebar__header {
+    padding: 1.1rem 1rem;
+    border-bottom: 1px solid #EEF2F7;
+    background: #FFFFFF;
+    position: relative;
+}
+
+.premium-sidebar__header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #003366, #C8A84B, #003366);
+    background-size: 200% 100%;
+    animation: holographic 5s ease infinite;
+}
+
+.premium-sidebar__logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.premium-sidebar__logo-mark {
+    width: 2.25rem;
+    height: 2.25rem;
+    background: linear-gradient(135deg, #003366, #0B4D99);
+    color: #C8A84B;
+    font-size: 0.65rem;
+    font-weight: 900;
+    font-family: 'JetBrains Mono', monospace;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    flex-shrink: 0;
+    letter-spacing: 0;
+    box-shadow: 0 2px 8px rgba(0, 51, 102, 0.2);
+}
+
+.premium-sidebar__logo-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.premium-sidebar__logo-name {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #003366;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+}
+
+.premium-sidebar__logo-sub {
+    font-size: 0.58rem;
+    font-weight: 600;
+    color: #C8A84B;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.premium-sidebar__nav {
+    padding: 0.5rem 0;
+}
+
+.premium-sidebar__group {
+    margin-bottom: 0;
+}
+
+.premium-sidebar__section-toggle {
+    font-size: 0.7rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.04em !important;
+    padding: 0.45rem 1rem !important;
+    color: #8896A4 !important;
+    border-top: 1px solid #F1F5F9 !important;
+    border-bottom: none !important;
+}
+
+.premium-sidebar__section-toggle:hover {
+    background: #F8FAFC !important;
+}
+
+.premium-sidebar__section-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #8896A4;
+    transition: color 0.2s;
+}
+
+.premium-sidebar__arrow {
+    font-size: 0.8rem;
+    color: #CBD5E1;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s !important;
+}
+
+.premium-sidebar__nav-item {
+    height: 40px !important;
+    border-radius: 6px !important;
+    margin: 0 0.5rem !important;
+    width: calc(100% - 1rem) !important;
+    position: relative;
+    overflow: visible !important;
+}
+
+.premium-sidebar__nav-item:hover {
+    background: #F1F5FF !important;
+    color: var(--item-color, #003366) !important;
+    border-left-color: transparent !important;
+    transform: none !important;
+}
+
+.premium-sidebar__nav-item.active {
+    background: color-mix(in srgb, var(--item-color, #003366) 8%, white) !important;
+    color: var(--item-color, #003366) !important;
+    font-weight: 700 !important;
+    box-shadow: none !important;
+    border-left-color: transparent !important;
+}
+
+.premium-sidebar__nav-label {
+    font-size: 0.82rem !important;
+    font-weight: 500;
+    color: inherit;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.premium-sidebar__nav-item.active .premium-sidebar__nav-label {
+    font-weight: 700;
+}
+
+.premium-sidebar__abbr {
+    font-size: 0.6rem !important;
+    border-radius: 4px !important;
+    width: 1.8rem !important;
+    height: 1.35rem !important;
+}
+
+.premium-sidebar__active-bar {
+    position: absolute;
+    right: 0;
+    top: 6px;
+    bottom: 6px;
+    width: 3px;
+    border-radius: 2px 0 0 2px;
+}
+
+.premium-sidebar__status {
+    padding: 0.85rem 1rem;
+    border-top: 1px solid #EEF2F7;
+    background: #F8FAFC;
+}
+
+.premium-sidebar__district-name {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #003366;
+    margin-top: 0.25rem;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.premium-sidebar__footer {
+    padding: 0.75rem;
+    border-top: 1px solid #EEF2F7;
+    background: #FFFFFF;
+}
+
+.premium-sidebar__logout {
+    background: transparent !important;
+    border: 1px solid #FEE2E2 !important;
+    color: #DC2626 !important;
+    border-radius: 6px !important;
+    font-size: 0.78rem !important;
+    transition: all 0.2s !important;
+}
+
+.premium-sidebar__logout:hover {
+    background: #FEF2F2 !important;
+    border-color: #FCA5A5 !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* === LOADING SKELETONS === */
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+}
+
+.skeleton-text {
+    height: 1em;
+    margin-bottom: 0.5em;
+}
+
+.skeleton-text:last-child {
+    width: 70%;
+}
+
+.skeleton-card {
+    height: 120px;
+    border-radius: 8px;
+}
+
+.skeleton-chart {
+    height: 200px;
+    border-radius: 8px;
+}
+
+/* === EMPTY STATES === */
+.empty-state {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    color: var(--grey-500);
+}
+
+.empty-state-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.6;
+}
+
+.empty-state-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--grey-700);
+    margin-bottom: 0.5rem;
+}
+
+.empty-state-description {
+    font-size: 0.875rem;
+    color: var(--grey-500);
+    max-width: 400px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* === LAST UPDATED TIMESTAMP === */
+.last-updated {
+    font-size: 0.7rem;
+    color: var(--grey-400);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.last-updated::before {
+    content: '●';
+    color: var(--agri-green-600);
+    font-size: 0.5rem;
+}
 
 /* === ROOT VARIABLES (LIGHT MODE DEFAULT) === */
 :root {
@@ -487,16 +969,17 @@ body[data-theme="dark"] .table-footer {
 
 /* === GOVERNMENT CARD === */
 .gov-card {
-    background: var(--color-bg-card);
-    border: 1px solid var(--color-border);
-    border-radius: 6px;
-    padding: var(--space-6);
-    box-shadow: var(--shadow-md);
-    transition: box-shadow 0.2s ease;
+    background: #FFFFFF;
+    border: 1px solid rgba(0,51,102,0.08);
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,51,102,0.04);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .gov-card:hover {
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08), 0 8px 32px rgba(0,51,102,0.08);
+    transform: translateY(-1px);
 }
 
 .gov-card-header {
@@ -594,4 +1077,915 @@ button:focus-visible,
 a:focus-visible {
     outline: 3px solid var(--color-primary);
     outline-offset: 2px;
+}
+
+/* ========================================
+   FUTURISTIC GOVERNMENT UI ENHANCEMENTS
+   Advanced animations and effects
+   ======================================== */
+
+/* === FUTURISTIC ANIMATIONS === */
+@keyframes scanline {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(100vh);
+    }
+}
+
+@keyframes dataPulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+@keyframes borderGlow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 5px rgba(30, 64, 175, 0.3), inset 0 0 5px rgba(30, 64, 175, 0.1);
+    }
+
+    50% {
+        box-shadow: 0 0 20px rgba(30, 64, 175, 0.5), inset 0 0 10px rgba(30, 64, 175, 0.2);
+    }
+}
+
+@keyframes holographic {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+    }
+
+    20% {
+        transform: translate(-2px, 2px);
+    }
+
+    40% {
+        transform: translate(-2px, -2px);
+    }
+
+    60% {
+        transform: translate(2px, 2px);
+    }
+
+    80% {
+        transform: translate(2px, -2px);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}
+
+/* === FUTURISTIC CARD STYLES === */
+.gov-card-futuristic {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: var(--space-6);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gov-card-futuristic::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+    transition: left 0.5s ease;
+}
+
+.gov-card-futuristic:hover::before {
+    left: 100%;
+}
+
+.gov-card-futuristic:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 8px 32px rgba(30, 64, 175, 0.15);
+    transform: translateY(-2px);
+}
+
+/* === DATA VISUALIZATION CARDS === */
+.data-viz-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: var(--space-4);
+    position: relative;
+    overflow: hidden;
+}
+
+.data-viz-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gov-blue-600), var(--agri-green-600), var(--gov-blue-600));
+    background-size: 200% 100%;
+    animation: holographic 3s ease infinite;
+}
+
+/* === STATUS INDICATORS === */
+.status-indicator-futuristic {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-indicator-futuristic::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    animation: dataPulse 2s ease-in-out infinite;
+}
+
+.status-indicator-futuristic.online {
+    background: var(--agri-green-100);
+    color: var(--agri-green-700);
+}
+
+.status-indicator-futuristic.online::before {
+    background: var(--agri-green-600);
+    box-shadow: 0 0 8px var(--agri-green-600);
+}
+
+.status-indicator-futuristic.warning {
+    background: #FEF3C7;
+    color: #92400E;
+}
+
+.status-indicator-futuristic.warning::before {
+    background: #F59E0B;
+    box-shadow: 0 0 8px #F59E0B;
+}
+
+.status-indicator-futuristic.critical {
+    background: #FEE2E2;
+    color: #DC2626;
+    animation: glitch 0.3s ease-in-out infinite;
+}
+
+.status-indicator-futuristic.critical::before {
+    background: #DC2626;
+    box-shadow: 0 0 8px #DC2626;
+}
+
+/* === FUTURISTIC BUTTONS === */
+.btn-futuristic {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-futuristic::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-futuristic:hover::before {
+    left: 100%;
+}
+
+.btn-futuristic-primary {
+    background: linear-gradient(135deg, var(--gov-blue-600), var(--gov-blue-700));
+    color: white;
+    box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
+}
+
+.btn-futuristic-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(30, 64, 175, 0.4);
+}
+
+.btn-futuristic-success {
+    background: linear-gradient(135deg, var(--agri-green-600), var(--agri-green-700));
+    color: white;
+    box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
+}
+
+.btn-futuristic-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(5, 150, 105, 0.4);
+}
+
+.btn-futuristic-warning {
+    background: linear-gradient(135deg, #F59E0B, #D97706);
+    color: white;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+}
+
+.btn-futuristic-warning:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+}
+
+.btn-futuristic-danger {
+    background: linear-gradient(135deg, #DC2626, #B91C1C);
+    color: white;
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+}
+
+.btn-futuristic-danger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+}
+
+/* === METRIC DISPLAY === */
+.metric-display {
+    font-family: 'JetBrains Mono', 'SF Mono', monospace;
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: #003366;
+}
+
+.metric-display-sm {
+    font-family: 'JetBrains Mono', 'SF Mono', monospace;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #003366;
+}
+
+/* === LOADING STATES === */
+.loading-scanner {
+    position: relative;
+    overflow: hidden;
+}
+
+.loading-scanner::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom,
+            transparent 0%,
+            rgba(30, 64, 175, 0.1) 50%,
+            transparent 100%);
+    animation: scanline 2s linear infinite;
+}
+
+/* === HEADER ENHANCEMENTS === */
+.header-glow {
+    position: relative;
+}
+
+.header-glow::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-primary), var(--agri-green-600), var(--color-primary), transparent);
+    background-size: 200% 100%;
+    animation: holographic 4s ease infinite;
+}
+
+/* === DATA STREAM EFFECT === */
+.data-stream {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    padding: 0.25rem 0.5rem;
+    background: var(--grey-100);
+    border-radius: 4px;
+    border-left: 3px solid var(--color-primary);
+    animation: dataPulse 3s ease-in-out infinite;
+}
+
+body[data-theme="dark"] .data-stream {
+    background: var(--grey-800);
+}
+
+/* === GLASSMORPHISM CARD === */
+.glass-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    padding: var(--space-6);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+body[data-theme="dark"] .glass-card {
+    background: rgba(31, 41, 55, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(75, 85, 99, 0.3);
+}
+
+/* === PROGRESS BARS === */
+.progress-bar-futuristic {
+    width: 100%;
+    height: 8px;
+    background: var(--grey-200);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+body[data-theme="dark"] .progress-bar-futuristic {
+    background: var(--grey-700);
+}
+
+.progress-bar-futuristic .fill {
+    height: 100%;
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--gov-blue-600), var(--agri-green-600));
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.progress-bar-futuristic .fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3));
+    animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* === TOOLTIP STYLES === */
+.tooltip-futuristic {
+    position: relative;
+}
+
+.tooltip-futuristic::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-8px);
+    padding: 0.5rem 0.75rem;
+    background: var(--grey-900);
+    color: white;
+    font-size: 0.75rem;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.tooltip-futuristic:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-4px);
+}
+
+/* === NOTIFICATION BADGE === */
+.notification-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    background: #DC2626;
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 700;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: float 2s ease-in-out infinite;
+}
+
+/* === SECTION HEADERS === */
+.section-header-futuristic {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-3);
+    border-bottom: 2px solid var(--color-border);
+}
+
+.section-header-futuristic::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--color-border), transparent);
+}
+
+.section-header-futuristic h2 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+.section-header-futuristic .icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--gov-blue-600), var(--agri-green-600));
+    border-radius: 6px;
+    color: white;
+    font-size: 0.875rem;
+}
+
+/* === RESPONSIVE FUTURISTIC ELEMENTS === */
+@media (max-width: 768px) {
+    .metric-display {
+        font-size: 1.75rem;
+    }
+
+    .metric-display-sm {
+        font-size: 1.25rem;
+    }
+
+    .btn-futuristic {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* ========================================
+   COMMAND CENTER ADDITIONS
+   World-Class Government UI Enhancements
+   ======================================== */
+
+/* === PAGE BACKGROUND === */
+.main-content-area {
+    background: #F0F4F8;
+    min-height: 100vh;
+}
+
+/* === HERO KPI CARD === */
+.hero-kpi-card {
+    background: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 6px;
+    padding: 1rem 1.1rem;
+    flex: 1 1 130px;
+    min-width: 130px;
+}
+
+/* === ANIMATED COUNTER STRIP === */
+@keyframes countPop {
+    0% { transform: scale(0.85); opacity: 0; }
+    60% { transform: scale(1.05); opacity: 1; }
+    100% { transform: scale(1); }
+}
+
+.counter-value {
+    animation: countPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* === GEOSPATIAL MAP BLOCK === */
+.geo-map-block {
+    background: #F5F7FA;
+    border-top: 1px solid #E5E7EB;
+    padding: 1rem;
+}
+
+/* === GOVERNMENT KPI PREMIUM STYLE === */
+.gov-kpi-thin {
+    background: #FFFFFF;
+    border: 1px solid rgba(0,51,102,0.08);
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.gov-kpi-thin:hover {
+    border-color: rgba(0,51,102,0.2);
+    box-shadow: 0 4px 16px rgba(0,51,102,0.09);
+    transform: translateY(-1px);
+}
+
+.gov-kpi-thin .kpi-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: #8896A4;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-bottom: 0.4rem;
+}
+
+.gov-kpi-thin .kpi-value {
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.gov-kpi-thin .kpi-sub {
+    font-size: 0.72rem;
+    color: #6B7280;
+    margin-top: 0.3rem;
+    font-weight: 500;
+}
+
+/* === AI CONFIDENCE INDICATOR === */
+.ai-confidence-bar {
+    height: 4px;
+    background: #E5E7EB;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.ai-confidence-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* === VERIFIED DATA BADGE === */
+.verified-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 3px 9px;
+    border: 1px solid #D1FAE5;
+    border-radius: 10px;
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: #198754;
+    background: #F0FDF4;
+}
+
+.verified-badge::before {
+    content: '✓';
+    font-weight: 900;
+    font-size: 0.65rem;
+}
+
+/* === GEOSPATIAL MAP — ANIMATED PULSE + HEATMAP LAYERS === */
+@keyframes mapPulseMarker {
+    0% {
+        r: 3.5;
+        opacity: 0.85;
+    }
+
+    70% {
+        r: 12;
+        opacity: 0;
+    }
+
+    100% {
+        r: 3.5;
+        opacity: 0;
+    }
+}
+
+.map-pulse-marker {
+    animation: mapPulseMarker 2.2s ease-out infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+@keyframes mapHeatPulse {
+
+    0%,
+    100% {
+        opacity: 0.12;
+    }
+
+    50% {
+        opacity: 0.32;
+    }
+}
+
+.map-heat-pulse {
+    animation: mapHeatPulse 3.5s ease-in-out infinite;
+}
+
+@keyframes mapAiMarker {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+.map-ai-marker {
+    animation: mapAiMarker 2.4s ease-in-out infinite;
+}
+
+/* === LEAFLET PREMIUM GOVERNMENT THEME OVERRIDES === */
+.leaflet-container {
+    background: #EEF2F7 !important;
+    font-family: inherit;
+}
+
+.leaflet-control-zoom {
+    border: 1px solid rgba(0,51,102,0.12) !important;
+    border-radius: 8px !important;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,51,102,0.1) !important;
+}
+
+.leaflet-control-zoom a {
+    background: rgba(255,255,255,0.97) !important;
+    color: #003366 !important;
+    border-color: rgba(0,51,102,0.1) !important;
+    font-size: 1rem !important;
+    width: 30px !important;
+    height: 30px !important;
+    line-height: 30px !important;
+    transition: background 0.15s !important;
+}
+
+.leaflet-control-zoom a:hover {
+    background: #F0F5FF !important;
+}
+
+.leaflet-control-attribution {
+    background: rgba(255,255,255,0.85) !important;
+    color: rgba(0,51,102,0.45) !important;
+    font-size: 0.62rem !important;
+    border-radius: 4px 0 0 0 !important;
+    backdrop-filter: blur(8px) !important;
+}
+
+.leaflet-control-attribution a {
+    color: #C8A84B !important;
+}
+
+.leaflet-tooltip {
+    background: rgba(255,255,255,0.98) !important;
+    border: 1px solid rgba(0,51,102,0.12) !important;
+    color: #003366 !important;
+    font-size: 0.78rem !important;
+    font-weight: 600 !important;
+    border-radius: 6px !important;
+    box-shadow: 0 4px 14px rgba(0,51,102,0.12) !important;
+    padding: 5px 10px !important;
+    backdrop-filter: blur(8px) !important;
+}
+
+.leaflet-tooltip-top:before {
+    border-top-color: rgba(0,51,102,0.12) !important;
+}
+
+.leaflet-popup-content-wrapper {
+    border-radius: 10px !important;
+    box-shadow: 0 8px 30px rgba(0,51,102,0.16) !important;
+    border: 1px solid rgba(0,51,102,0.08) !important;
+}
+
+.leaflet-popup-tip {
+    box-shadow: none !important;
+}
+
+/* === LAYER TOGGLE BUTTONS === */
+.layer-btn {
+    padding: 3px 9px;
+    border-radius: 3px;
+    font-size: 0.58rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    letter-spacing: 0.2px;
+}
+
+/* === MOBILE RESPONSIVE COMMAND CENTER === */
+@media (max-width: 768px) {
+    .dashboard-layout {
+        flex-direction: column;
+        position: relative;
+    }
+
+    .main-content {
+        padding: 0.75rem !important;
+    }
+
+    /* Push content right when sidebar is overlay */
+    .sidebar-toggle {
+        display: flex !important;
+    }
+
+    .gov-sidebar {
+        height: 100vh;
+    }
+}
+
+/* === TABLET RESPONSIVE === */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .sidebar-toggle {
+        display: none !important;
+    }
+}
+
+/* === DESKTOP === */
+@media (min-width: 1025px) {
+    .sidebar-toggle {
+        display: none !important;
+    }
+
+    .sidebar-overlay {
+        display: none !important;
+    }
+}
+
+/* === RTL (URDU) SUPPORT === */
+[dir="rtl"] .gov-kpi-thin {
+    text-align: right;
+}
+
+[dir="rtl"] .kpi-label,
+[dir="rtl"] .kpi-sub {
+    text-align: right;
+}
+
+/* === PERFORMANCE — WILL-CHANGE FOR ANIMATED ELEMENTS === */
+.status-indicator.online,
+[style*="dataPulse"],
+[style*="borderGlow"],
+[style*="holographic"] {
+    will-change: opacity, transform, background-position;
+}
+
+/* === PRINT STYLES === */
+@media print {
+    .gov-sidebar,
+    .sidebar-toggle,
+    .sidebar-overlay,
+    .global-header {
+        display: none !important;
+    }
+
+    .main-content {
+        padding: 1rem !important;
+    }
+}
+
+.gov-input { width: 100%; padding: 0.65rem 0.9rem; border: 1px solid #E5E7EB; border-radius: 8px; font-family: var(--font-sans); font-size: 0.95rem; color: var(--color-text-primary); background: #FFFFFF; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
+.gov-input:focus { outline: none; border-color: var(--gov-blue-600); box-shadow: 0 0 0 3px rgba(30,64,175,0.1); }
+.gov-label { display: block; font-size: 0.8rem; font-weight: 600; color: var(--gov-blue-800); margin-bottom: 0.35rem; text-transform: uppercase; letter-spacing: 0.03em; }
+.gov-btn-primary { background: var(--gov-blue-700); color: #FFFFFF; border: none; border-radius: 8px; padding: 0.75rem 1.5rem; font-family: var(--font-sans); font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: background 0.2s ease; }
+.gov-btn-primary:hover { background: var(--gov-blue-800); }
+.gov-form-step { background: #FFFFFF; border: 1px solid rgba(0,51,102,0.08); border-radius: 10px; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+
+:root {
+  --teal: #00D4AA;
+  --gold: #FFB800;
+  --navy-deep: #060C18;
+}
+
+.gov-card { transition: transform 0.2s ease, box-shadow 0.25s ease; }
+.gov-card:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,51,102,0.12), 0 0 0 1px rgba(0,212,170,0.15); }
+
+.premium-header { border-bottom: 2px solid transparent; background-image: linear-gradient(#FFFFFF,#FFFFFF), linear-gradient(90deg,#003366,#00D4AA,#FFB800); background-origin: border-box; background-clip: padding-box, border-box; animation: borderGlow 4s ease infinite; }
+
+.premium-header__title { background: linear-gradient(135deg, #003366 0%, #1E40AF 50%, #00D4AA 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 800; letter-spacing: -0.02em; }
+
+.premium-alert-ticker { animation: scanline 8s linear infinite; }
+
+.hero-kpi-card { animation: float 6s ease-in-out infinite; }
+.hero-kpi-card:nth-child(2) { animation-delay: -1.5s; }
+.hero-kpi-card:nth-child(3) { animation-delay: -3s; }
+.hero-kpi-card:nth-child(4) { animation-delay: -4.5s; }
+
+.data-viz-card { transition: transform 0.2s ease, box-shadow 0.25s ease; }
+.data-viz-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,51,102,0.15); }
+
+.gov-card-futuristic { border: 1px solid rgba(0,212,170,0.2); background: linear-gradient(135deg, rgba(6,12,24,0.02) 0%, rgba(0,212,170,0.03) 100%); }
+
+.metric-value { animation: countPop 0.6s cubic-bezier(0.34,1.56,0.64,1) both; }
+
+.district-card { transition: all 0.2s ease; }
+.district-card:hover { transform: scale(1.03); box-shadow: 0 8px 24px rgba(0,51,102,0.18); z-index: 10; }
+
+.nav-item-active { position: relative; }
+.nav-item-active::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background: linear-gradient(180deg,#00D4AA,#FFB800); border-radius:0 2px 2px 0; animation: borderGlow 2s ease infinite; }
+
+.skeleton-card { background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; }
+
+.risk-badge-high { animation: alertPulse 2s ease-in-out infinite; }
+
+.gov-btn-primary { transition: all 0.2s ease; position: relative; overflow: hidden; }
+.gov-btn-primary::after { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(255,255,255,0.15),transparent); opacity:0; transition:opacity 0.2s; }
+.gov-btn-primary:hover::after { opacity:1; }
+.gov-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(30,64,175,0.35); }
+
+.page-enter { animation: slideUp 0.4s cubic-bezier(0.34,1.56,0.64,1) both; }
+
+@keyframes slideUpFade { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+.fade-in-up { animation: slideUpFade 0.5s ease both; }
+.fade-in-up:nth-child(1){animation-delay:0s}
+.fade-in-up:nth-child(2){animation-delay:0.08s}
+.fade-in-up:nth-child(3){animation-delay:0.16s}
+.fade-in-up:nth-child(4){animation-delay:0.24s}
+.fade-in-up:nth-child(5){animation-delay:0.32s}
+
+.gov-card {
+  transition: transform 0.22s ease, box-shadow 0.22s ease !important;
+}
+.gov-card:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 28px rgba(0,51,102,0.13), 0 0 0 1px rgba(0,212,170,0.12) !important;
+}
+.hero-kpi-card {
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+.hero-kpi-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 32px rgba(0,51,102,0.16);
+}
+@keyframes slideUpFade {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.gov-card, .hero-kpi-card, .data-viz-card, .skeleton-card {
+  animation: slideUpFade 0.45s ease both;
+}
+.gov-btn-primary {
+  transition: transform 0.18s ease, box-shadow 0.18s ease !important;
+}
+.gov-btn-primary:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 16px rgba(30,64,175,0.32) !important;
+}
+.premium-header {
+  border-bottom: 2px solid transparent;
+  background-image: linear-gradient(white, white), linear-gradient(90deg, #003366, #00D4AA 50%, #FFB800);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+.premium-alert-ticker {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
 }
